@@ -1,0 +1,5 @@
+require 'spree_core'
+require 'spree_extension'
+require 'spree_sezzle/engine'
+require 'spree_sezzle/version'
+require 'spree_sezzle/configuration'

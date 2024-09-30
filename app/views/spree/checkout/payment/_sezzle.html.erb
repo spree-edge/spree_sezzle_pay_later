@@ -1,0 +1,6 @@
+<script type="text/javascript" src="https://checkout-sdk.sezzle.com/checkout.min.js"></script>
+
+<div id="order-data" data-public-key="<%= payment_method.preferences[:public_key] %>" data-order-total="<%= (@order.total * 100).to_i %>" data-order-number="<%= @order.number %>"></div>
+
+<div id="sezzle-smart-button-container"></div>
+<div id="sezzle-smart-button-container" templateText="Pay with %%logo%%" borderType="semi-rounded"></div>

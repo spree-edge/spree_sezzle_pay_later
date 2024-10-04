@@ -4,7 +4,7 @@ module SpreeSezzle
       class_option :migrate, type: :boolean, default: true
 
       def add_javascripts
-        append_file 'vendor/assets/javascripts/spree/frontend/all.js', "\n//= require spree/frontend/spree_razorpay\n"
+        append_file 'vendor/assets/javascripts/spree/frontend/all.js', "\n//= require spree/frontend/spree_sezzle\n"
       end
 
       def add_migrations

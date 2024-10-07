@@ -6,7 +6,7 @@ const { orderTotal, orderNumber, publicKey } = orderDataElement.dataset;
 const checkout = new Checkout({
   'mode': "popup",
   'publicKey': publicKey,
-  'apiMode': "ssandbox",
+  'apiMode': "sandbox",
   'apiVersion': "v2"
 });
 

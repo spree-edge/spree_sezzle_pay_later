@@ -7,7 +7,8 @@ const checkout = new Checkout({
   'mode': "popup",
   'publicKey': publicKey,
   'apiMode': "sandbox",
-  'isVirtualCard': true
+  'isVirtualCard': true,
+  'apiVersion': "v2"
 });
 
 checkout.renderSezzleButton("sezzle-smart-button-container");

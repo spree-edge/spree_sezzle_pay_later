@@ -1,0 +1,23 @@
+<fieldset data-hook="credit_card">
+  <legend>Sezzle Pay Later</legend>
+  <div class="table-responsive border rounded bg-white mb-3">
+    <table class="table table-condensed">
+      <tr>
+        <th width="20%">Order UUID:</th>
+        <td><%= payment.source.order_uuid %></td>
+      </tr>
+      <tr>
+        <th>Checkout UUID:</th>
+        <td><%= payment.source.checkout_uuid %></td>
+      </tr>
+      <tr>
+        <th>Status:</th>
+        <td><%= payment.source.state %></td>
+      </tr>
+      <tr>
+        <th>Created At:</th>
+        <td><%= payment.created_at %></td>
+      </tr>
+    </table>
+  </div>
+</fieldset>

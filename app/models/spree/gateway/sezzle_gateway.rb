@@ -21,5 +21,9 @@ module Spree
     def request_type
       'DEFAULT'
     end
+
+    def credit(amount_in_cents, auth_code, gateway_options)
+      # Need to work on it for refund
+    end
   end
 end

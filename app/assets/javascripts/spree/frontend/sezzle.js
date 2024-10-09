@@ -1,13 +1,12 @@
 //= require spree/frontend
 
 const orderDataElement = document.getElementById('order-data');
-const { orderTotal, orderNumber, publicKey } = orderDataElement.dataset;
+const { orderTotal, orderNumber, publicKey, server } = orderDataElement.dataset;
 
 const checkout = new Checkout({
   'mode': "popup",
   'publicKey': publicKey,
-  'apiMode': "sandbox",
-  'isVirtualCard': true,
+  'apiMode': server,
   'apiVersion': "v2"
 });
 
@@ -31,18 +30,19 @@ checkout.init({
     });
   },
   onComplete: function (event) {
-    handleComplete();
+    handleComplete(event);
   },
   onCancel: function() {
-    handleCancel();
+    handleCancel(event);
   },
   onFailure: function() {
+    handleFailure(event);
     console.log("checkout failed");
   }
 })
 
 function handleCancel() {
-  fetch('/sezzle/cancel', {
+  fetch('/sezzle_pay/cancel', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -56,15 +56,15 @@ function handleCancel() {
     return response.json();
   })
   .then(data => {
-      window.location.href = data.redirect_url; 
+      window.location.href = data.redirect_url;
   })
   .catch((error) => {
     console.error('Error:', error);
   });
 }
 
-function handleComplete() {
-  fetch('/sezzle/complete', {
+function handleFailure() {
+  fetch('/sezzle_pay/failure', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -78,7 +78,30 @@ function handleComplete() {
     return response.json();
   })
   .then(data => {
-      window.location.href = data.redirect_url; 
+      window.location.href = data.redirect_url;
+  })
+  .catch((error) => {
+    console.error('Error:', error);
+  });
+}
+
+function handleComplete(event) {
+  fetch('/sezzle_pay/complete?order_number=' + orderNumber, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+    },
+    body: JSON.stringify(event.data)
+  })
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Failed to update Status');
+    }
+    return response.json();
+  })
+  .then(data => {
+      window.location.href = data.redirect_url;
   })
   .catch((error) => {
     console.error('Error:', error);

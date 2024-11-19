@@ -1,4 +1,4 @@
-<script type="text/javascript" src="https://checkout-sdk.sezzle.com/checkout.min.js"></script>
+<script type="text/javascript" src="https://checkout-sdk.sezzle.com/checkout.min.js" data-turbo-track="reload"></script>
 
 <div id="order-data" data-public-key="<%= payment_method.preferences[:public_key] %>" data-order-total="<%= (@order.total * 100).to_i %>" data-order-number="<%= @order.number %>" data-server="<%= payment_method.preferences[:server] %>"></div>
 

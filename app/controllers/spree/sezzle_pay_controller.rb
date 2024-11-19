@@ -10,7 +10,7 @@ module Spree
     end
 
     def cancel
-      flash[:notice] = Spree.t("flash.cancel")
+      flash[:notice] = Spree.t('flash.cancel')
       render json: { redirect_url: checkout_state_path(current_order.state) }, status: :ok
     end
 

@@ -1,4 +1,4 @@
 module Spree
-  class SezzlePayCheckout <  ActiveRecord::Base
+  class SezzlePayCheckout < ApplicationRecord
   end
 end

@@ -7,7 +7,7 @@ Introduction goes here.
 1. Add this extension to your Gemfile with this line:
 
     ```ruby
-    gem 'spree_sezzle'
+    gem 'spree_sezzle', github: "spree-edge/spree_sezzle_pay_later"
     ```
 
 2. Install the gem using Bundler
